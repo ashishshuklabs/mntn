@@ -1,2 +1,3 @@
 import { Landing } from "./landing/Landing";
-export { Landing };
+import { Main } from "./main/Main";
+export { Landing, Main };

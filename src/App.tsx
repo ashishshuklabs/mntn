@@ -1,7 +1,8 @@
-import { Landing } from "./views";
+import { Main } from "./views";
+
 
 function App() {
-  return <Landing />;
+  return <Main />;
 }
 
 export default App;

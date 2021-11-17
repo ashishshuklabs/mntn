@@ -16,13 +16,13 @@ export const HeroSection = () => {
   const bannerOpacity = useTransform(scrollYProgress, [0.1, 0.5], ["1", "0"]);
 
   return (
-    <div>
-      <Container>
-        <Banner style={{ y: bannerY, opacity: bannerOpacity }}>
-          <div className="header-tag">
-            <TagWithLine title="a hiking guide" />
-          </div>
-          <h1 className="title">Be prepared for the Mountains and beyond!</h1>
+    <Container>
+      <Banner style={{ y: bannerY, opacity: bannerOpacity }}>
+        <div className="header-tag">
+          <TagWithLine title="a hiking guide" />
+        </div>
+        <h1 className="title">Be prepared for the Mountains and beyond!</h1>
+        <div className="btn-wrapper">
           <Button
             withIcon
             title="scroll down"
@@ -34,13 +34,13 @@ export const HeroSection = () => {
               />
             }
           />
-        </Banner>
-        <motion.img style={{ y: mgY }} className="mg" src={mg} alt="mg" />
-        <motion.img style={{ y: hgY }} className="hg" src={hg} alt="hg" />
-        <motion.img style={{ y: vgY }} className="vg" src={vg} alt="vg" />
-        <div className="hero-gradient"></div>
-      </Container>
-    </div>
+        </div>
+      </Banner>
+      <motion.img style={{ y: mgY }} className="mg" src={mg} alt="mg" />
+      <motion.img style={{ y: hgY }} className="hg" src={hg} alt="hg" />
+      <motion.img style={{ y: vgY }} className="vg" src={vg} alt="vg" />
+      <div className="hero-gradient"></div>
+    </Container>
   );
 };
 const Banner = styled(motion.div)`
@@ -53,19 +53,24 @@ const Banner = styled(motion.div)`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  .header-tag{
-    margin: 0 25%;
+  .header-tag {
+    width: 100%;
+    padding: 0 25%;
   }
   .title {
     color: white;
     flex-wrap: wrap;
-    margin: 0 25%;
+    padding: 0 25%;
     @media (max-width: 991px) {
       font-size: 4rem;
     }
     @media (max-width: 767px) {
       font-size: 3.5rem;
     }
+  }
+  .btn-wrapper {
+    width: 100%;
+    padding: 0 25%;
   }
 `;
 const Container = styled.header`
