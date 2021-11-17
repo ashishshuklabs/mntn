@@ -15,9 +15,9 @@ export const ContentSection = () => {
 };
 
 const SectionWrapper = styled.section`
-  position: absolute;
-  top: 50%;
+  position: relative;
   max-width: 100%;
+  padding-top: 12rem;
   background: linear-gradient(180deg, rgba(11, 29, 38, 0), #0b1d26 20%);
   margin: auto;
   display: flex;
