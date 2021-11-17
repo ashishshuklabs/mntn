@@ -4,7 +4,7 @@ import image1 from "../../assets/images/1.png";
 
 export const Content1 = () => {
   return (
-    <BaseContent
+    <BaseContent id="content-1"
       imagePosition="right"
       width="100%"
       tag="get started"

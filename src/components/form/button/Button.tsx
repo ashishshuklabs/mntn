@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEvent } from "react";
 import styled from "styled-components";
 import { ColorTypes } from "../../../types/sharedTypes";
 interface ButtonProps {
@@ -7,20 +7,28 @@ interface ButtonProps {
   buttonStyle?: React.CSSProperties;
   withIcon: boolean;
   svgIcon?: React.ReactNode;
+  onClick?: (e: React.MouseEvent) => void;
 }
 export const Button = (props: ButtonProps) => {
+  const handleClick = (e: React.MouseEvent) => {
+    if (props.onClick) {
+      props.onClick(e);
+    }
+  };
   return (
     <StyledButton
       buttonStyle={props.buttonStyle}
       color={props.color}
       withIcon={props.withIcon}
     >
-      <a href="#">{props.title}</a>
+      <a onClick={handleClick} href="#">
+        {props.title}
+      </a>
       {props.svgIcon}
     </StyledButton>
   );
 };
-type StyledButtonProps = Omit<ButtonProps, "title" | "svgIcon">;
+type StyledButtonProps = Omit<ButtonProps, "title" | "svgIcon" | "onClick">;
 const StyledButton = styled.div<StyledButtonProps>`
   display: flex;
   a {

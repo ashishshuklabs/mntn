@@ -7,6 +7,7 @@ import { motion, useTransform, useViewportScroll } from "framer-motion";
 import { TagWithLine } from "../../tag/TagWithLine";
 import { Button } from "../../form/button/Button";
 import { DownArrow } from "../../icon/DownArrow";
+import React, { useRef } from "react";
 
 export const HeroSection = () => {
   const { scrollYProgress } = useViewportScroll();
@@ -15,7 +16,17 @@ export const HeroSection = () => {
   const vgY = useTransform(scrollYProgress, [0.1, 0.5], ["0%", "-10%"]);
   const bannerY = useTransform(scrollYProgress, [0.1, 0.5], ["0%", "-60%"]);
   const bannerOpacity = useTransform(scrollYProgress, [0.1, 0.5], ["1", "0"]);
+  const contentRef = useRef<HTMLElement|null>(null);
+  React.useLayoutEffect(() =>{
+    contentRef.current = document.querySelector<HTMLElement>("#content-1");
+  },[]);
+  const onClick = (e: React.MouseEvent) =>{
+    e.preventDefault()
+    if(contentRef.current){
+      contentRef.current.scrollIntoView({ behavior: "smooth"});
+    }
 
+  }
   return (
     <Container>
       <Banner style={{ y: bannerY, opacity: bannerOpacity }}>
@@ -25,6 +36,7 @@ export const HeroSection = () => {
         <h1 className="title">Be prepared for the Mountains and beyond!</h1>
         <div className="btn-wrapper">
           <Button
+            onClick={onClick}
             withIcon
             title="scroll down"
             color="tertiary"

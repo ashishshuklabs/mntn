@@ -11,6 +11,7 @@ interface ContentProps {
   tag: string;
   contentTitle: string;
   contentCount: string;
+  id?: string;
 }
 export const BaseContent = (props: ContentProps) => {
   const {
@@ -22,9 +23,10 @@ export const BaseContent = (props: ContentProps) => {
     tag,
     contentTitle,
     contentCount,
+    id
   } = props;
   const Content = () => (
-    <ContentWrapper colors="secondary">
+    <ContentWrapper id={id} colors="secondary">
       <div className="number">{contentCount}</div>
       <div className="content">
         <TagWithLine title={tag} />
