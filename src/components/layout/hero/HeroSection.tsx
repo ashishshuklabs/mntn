@@ -50,7 +50,7 @@ const Banner = styled(motion.div)`
   top: 25%;
   max-width: 120rem;
   width: 100%;
-  z-index: -500;
+  z-index: 50;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
