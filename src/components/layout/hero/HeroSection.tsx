@@ -11,20 +11,19 @@ export const HeroSection = () => {
   const contentRef = useRef<HTMLElement | null>(null);
   const containerRef = useRef<HTMLElement | null>(null);
   const [windowScroll, setWindowScroll] = useState<null | number>(null);
-  React.useLayoutEffect(() => {
-    contentRef.current = document.querySelector<HTMLElement>("#content-1");
-    containerRef.current = document.querySelector<HTMLElement>("header");
-    setWindowScroll(window.pageYOffset); //Initialize
-  }, []);
   const [scrollValue, setScrollValue] = useState({
-    bannerScroll: 0,
-    mgScroll: 0,
-    vgScroll: 0,
-    hgScroll: 0,
-    // bannerOpacity: 1,//This needs to be calculated again.
+    bannerScrollY: 0,
+    mgScrollY: 0,
+    vgScrollY: 0,
+    hgScrollY: 0,
+    bannerOpacity: 1,
   });
 
   useLayoutEffect(() => {
+    contentRef.current = document.querySelector<HTMLElement>("#content-1"); //This is for button click event, just so something happens onClick.
+    containerRef.current = document.querySelector<HTMLElement>("header"); //Needed for calculating scrolling bounds
+    setWindowScroll(window.pageYOffset); //Initialize
+    //attach to the scroll event right after layout setup, before loading page
     const onScroll = (): void => {
       const scroll = window.pageYOffset; //scroll value
       setWindowScroll(scroll);
@@ -34,25 +33,18 @@ export const HeroSection = () => {
   }, []);
 
   useEffect(() => {
-    const onScroll = (): void => {
+    const onScroll = () => {
       const scroll = windowScroll ? windowScroll : 0; //scroll value
       const containerHeight =
         containerRef.current?.getBoundingClientRect().height;
+      //trigger only when within the container bounds
       if (scroll && containerHeight && scroll < containerHeight) {
-        //trigger only when within the 0-height bounds
-        console.log(
-          "triggering............scroll value",
-          scroll,
-          "container height",
-          containerHeight
-        );
-        //Using it directly for now. But ideally it should be debounced. May be will do it later.
         setScrollValue({
-          bannerScroll: -(scroll * 6.25) / 100,
-          mgScroll: -(scroll * 6.25) / (2 * 100),
-          vgScroll: -(scroll * 6.25) / (3 * 100),
-          hgScroll: -(scroll * 6.25) / 100,
-          // bannerOpacity: (1 - (-scroll * 6.25) / 100) / 100,
+          bannerScrollY: -(scroll * 6.25) / 100,
+          mgScrollY: -(scroll * 6.25) / (2 * 100),
+          vgScrollY: -(scroll * 6.25) / (3 * 100),
+          hgScrollY: -(scroll * 6.25) / 100,
+          bannerOpacity: 1 - scroll / containerHeight,
         });
       }
     };
@@ -69,8 +61,8 @@ export const HeroSection = () => {
     <Container>
       <Banner
         style={{
-          transform: `translateY(${scrollValue.bannerScroll}%)`,
-          // opacity: `${scrollValue.bannerOpacity}`,
+          transform: `translateY(${scrollValue.bannerScrollY}%)`,
+          opacity: `${scrollValue.bannerOpacity}`,
         }}
       >
         <div className="header-tag">
@@ -93,19 +85,19 @@ export const HeroSection = () => {
         </div>
       </Banner>
       <img
-        style={{ transform: `translateY(${scrollValue.mgScroll}%)` }}
+        style={{ transform: `translateY(${scrollValue.mgScrollY}%)` }}
         className="mg"
         src={mg}
         alt="mg"
       />
       <img
-        style={{ transform: `translateY(${scrollValue.hgScroll}%)` }}
+        style={{ transform: `translateY(${scrollValue.hgScrollY}%)` }}
         className="hg"
         src={hg}
         alt="hg"
       />
       <img
-        style={{ transform: `translateY(${scrollValue.vgScroll}%)` }}
+        style={{ transform: `translateY(${scrollValue.vgScrollY}%)` }}
         className="vg"
         src={vg}
         alt="vg"
@@ -142,7 +134,7 @@ const Banner = styled.div`
   }
   .btn-wrapper {
     width: 100%;
-    padding: 0 25%;
+    margin: 0 25%;
   }
 `;
 const Container = styled.header`
@@ -156,7 +148,6 @@ const Container = styled.header`
   img {
     position: absolute;
     width: 100%;
-    object-fit: cover;
   }
   .hero-gradient {
     position: absolute;
@@ -170,7 +161,7 @@ const Container = styled.header`
     height: 100vh;
   }
   .hg {
-    top: 0%;
+    top: 0rem;
     left: 0%;
     height: 70rem;
   }
@@ -179,6 +170,7 @@ const Container = styled.header`
     left: 0%;
     z-index: 1;
     height: 89rem;
+    /* object-fit: scale-down; */
   }
 
   .vg {
@@ -186,6 +178,8 @@ const Container = styled.header`
     left: 0%;
     height: 58rem;
     z-index: 50;
+    /* object-fit: scale-down; */
+    object-fit: cover;
   }
   .bg-content {
     position: absolute;
