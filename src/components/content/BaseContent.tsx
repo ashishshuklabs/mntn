@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { Button } from "../form/button/Button";
 import { TagWithLine } from "../tag/TagWithLine";
 import { RightArrow } from "../icon/RightArrow";
+import { useRef } from "react";
+import React from "react";
 interface ContentProps {
   imagePosition: "left" | "right";
   width: string;
@@ -23,8 +25,19 @@ export const BaseContent = (props: ContentProps) => {
     tag,
     contentTitle,
     contentCount,
-    id
+    id,
   } = props;
+  const contentRef = useRef<HTMLElement | null>(null);
+
+  React.useLayoutEffect(() => {
+    contentRef.current = document.querySelector<HTMLElement>("#content-1");
+  }, []);
+  const onClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (contentRef.current) {
+      contentRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   const Content = () => (
     <ContentWrapper id={id} colors="secondary">
       <div className="number">{contentCount}</div>
@@ -33,6 +46,7 @@ export const BaseContent = (props: ContentProps) => {
         <h2 className="title">{contentTitle}</h2>
         <p className="description">{content}</p>
         <Button
+          onClick={onClick}
           withIcon
           title={buttonLabel}
           color="secondary"
