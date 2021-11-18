@@ -109,7 +109,7 @@ export const HeroSection = () => {
 };
 const Banner = styled.div`
   position: fixed;
-  top: 25%;
+  top: 20%;
   max-width: 120rem;
   width: 100%;
   z-index: 50;
@@ -119,12 +119,12 @@ const Banner = styled.div`
   justify-content: center;
   .header-tag {
     width: 100%;
-    padding: 0 25%;
+    padding: 0px 15% 0px 26%;
   }
   .title {
     color: white;
     flex-wrap: wrap;
-    padding: 0 25%;
+    padding: 0px 15% 0px 26%;
     @media (max-width: 991px) {
       font-size: 4rem;
     }
@@ -134,7 +134,7 @@ const Banner = styled.div`
   }
   .btn-wrapper {
     width: 100%;
-    margin: 0 25%;
+    margin: 0px 15% 0px 26%;
   }
 `;
 const Container = styled.header`
@@ -148,6 +148,7 @@ const Container = styled.header`
   img {
     position: absolute;
     width: 100%;
+    background-size: contain;
   }
   .hero-gradient {
     position: absolute;
@@ -166,7 +167,7 @@ const Container = styled.header`
     height: 70rem;
   }
   .mg {
-    top: 29rem;
+    top: 20rem;
     left: 0%;
     z-index: 1;
     height: 89rem;
@@ -174,7 +175,7 @@ const Container = styled.header`
   }
 
   .vg {
-    top: 48rem;
+    top: 31rem;
     left: 0%;
     height: 58rem;
     z-index: 50;
