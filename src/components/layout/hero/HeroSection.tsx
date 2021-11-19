@@ -85,24 +85,33 @@ export const HeroSection = () => {
         </div>
       </Banner>
       <img
-        style={{ transform: `translateY(${scrollValue.mgScrollY}%)` }}
+        style={{
+          transform: `translateY(${scrollValue.mgScrollY}%)`,
+          opacity: scrollValue.bannerOpacity === 0 ? 0 : 1,
+        }}
         className="mg"
         src={mg}
         alt="mg"
       />
       <img
-        style={{ transform: `translateY(${scrollValue.hgScrollY}%)` }}
+        style={{
+          transform: `translateY(${scrollValue.hgScrollY}%)`,
+          opacity: scrollValue.bannerOpacity === 0 ? 0 : 1,
+        }}
         className="hg"
         src={hg}
         alt="hg"
       />
       <img
-        style={{ transform: `translateY(${scrollValue.vgScrollY}%)` }}
+        style={{
+          transform: `translateY(${scrollValue.vgScrollY}%)`,
+          opacity: scrollValue.bannerOpacity === 0 ? 0 : 1,
+        }}
         className="vg"
         src={vg}
         alt="vg"
       />
-      <img className="bg-content" src={bgContent} alt="break" />
+      {/* <img className="bg-content" src={bgContent} alt="break" /> */}
       <div className="hero-gradient"></div>
     </Container>
   );
@@ -148,7 +157,6 @@ const Container = styled.header`
   img {
     position: absolute;
     width: 100%;
-    background-size: contain;
   }
   .hero-gradient {
     position: absolute;
@@ -171,7 +179,6 @@ const Container = styled.header`
     left: 0%;
     z-index: 1;
     height: 89rem;
-    /* object-fit: scale-down; */
   }
 
   .vg {
@@ -179,15 +186,14 @@ const Container = styled.header`
     left: 0%;
     height: 58rem;
     z-index: 50;
-    /* object-fit: scale-down; */
-    object-fit: cover;
+    object-fit: scale-down;
   }
-  .bg-content {
+  /* .bg-content {
     position: absolute;
     top: 75rem;
     left: 0;
     height: 43rem;
     z-index: 50;
     background: linear-gradient(180deg, rgba(11, 29, 38, 0) 0%, #0b1d26 61.38%);
-  }
+  } */
 `;
