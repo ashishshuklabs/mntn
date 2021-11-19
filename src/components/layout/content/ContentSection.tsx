@@ -43,12 +43,4 @@ const SectionWrapper = styled.section`
   align-items: center;
   justify-content: center;
   z-index: 50;
-  /* .bg-content {
-    position: absolute;
-    top: 75rem;
-    left: 0;
-    height: 43rem;
-    z-index: 50;
-    background: linear-gradient(180deg, rgba(11, 29, 38, 0) 0%, #0b1d26 61.38%);
-  } */
 `;

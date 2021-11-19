@@ -87,7 +87,6 @@ export const HeroSection = () => {
       <img
         style={{
           transform: `translateY(${scrollValue.mgScrollY}%)`,
-          opacity: scrollValue.bannerOpacity === 0 ? 0 : 1,
         }}
         className="mg"
         src={mg}
@@ -96,7 +95,6 @@ export const HeroSection = () => {
       <img
         style={{
           transform: `translateY(${scrollValue.hgScrollY}%)`,
-          opacity: scrollValue.bannerOpacity === 0 ? 0 : 1,
         }}
         className="hg"
         src={hg}
@@ -105,13 +103,11 @@ export const HeroSection = () => {
       <img
         style={{
           transform: `translateY(${scrollValue.vgScrollY}%)`,
-          opacity: scrollValue.bannerOpacity === 0 ? 0 : 1,
         }}
         className="vg"
         src={vg}
         alt="vg"
       />
-      {/* <img className="bg-content" src={bgContent} alt="break" /> */}
       <div className="hero-gradient"></div>
     </Container>
   );
@@ -188,12 +184,4 @@ const Container = styled.header`
     z-index: 50;
     object-fit: scale-down;
   }
-  /* .bg-content {
-    position: absolute;
-    top: 75rem;
-    left: 0;
-    height: 43rem;
-    z-index: 50;
-    background: linear-gradient(180deg, rgba(11, 29, 38, 0) 0%, #0b1d26 61.38%);
-  } */
 `;
