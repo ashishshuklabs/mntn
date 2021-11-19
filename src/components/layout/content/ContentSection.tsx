@@ -8,7 +8,9 @@ import bgContent from "../../../assets/images/BG-Content.png";
 export const ContentSection = () => {
   return (
     <Container>
-      <img className="bg-content" src={bgContent} alt="break" />
+      {/* <img className="bg-content" src={bgContent} alt="break" /> */}
+      <div className="bg-content" />
+
       <SectionWrapper>
         <Content1 />
         <Content2 />
@@ -20,7 +22,7 @@ export const ContentSection = () => {
 const Container = styled.div`
   z-index: 50;
   position: absolute;
-  top: 64rem;
+  top: 58rem;
   .bg-content {
     position: absolute;
     width: 100%;

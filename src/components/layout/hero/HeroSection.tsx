@@ -114,7 +114,7 @@ export const HeroSection = () => {
 };
 const Banner = styled.div`
   position: fixed;
-  top: 20%;
+  top: 14%;
   max-width: 120rem;
   width: 100%;
   z-index: 50;
@@ -178,7 +178,7 @@ const Container = styled.header`
   }
 
   .vg {
-    top: 31rem;
+    top: 26rem;
     left: 0%;
     height: 58rem;
     z-index: 50;
