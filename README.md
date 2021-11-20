@@ -1,6 +1,6 @@
 # Fun Landing Page
 
-#### <i>Parallax-Scrolling - no library - plain react/javascript/typescript
+#### <i>Parallax-Scrolling - no library - plain react/typescript
 #### React
 #### Styled Components
 #### vitejs
